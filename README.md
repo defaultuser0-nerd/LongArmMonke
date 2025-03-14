@@ -2,9 +2,10 @@
 <a href="https://github.com/defaultuser0-nerd/LongArmMonke/releases"><img src="https://img.shields.io/github/downloads/defaultuser0-nerd/LongArmMonke/total.svg?style=for-the-badge"></a>
 
 Basically a rewrite of LongArmMonke, a quest mod, for PC.
+
 Thanks RainWave for helping test the mod
 
-![image](https://github.com/user-attachments/assets/fd4448bb-f4fe-4fb4-a6b8-45adba8a2247)
+![image](https://github.com/user-attachments/assets/b7fbcd60-ec4e-475a-ab3c-6f3290d2a87b)
 
 ### **Requirements**
  - [BepInEx](<https://github.com/BepInEx/BepInEx/releases/latest>)
