@@ -3,6 +3,8 @@
 
 Basically a rewrite of LongArmMonke, a quest mod, for PC.
 
+**You must be in a modded**
+
 Thanks RainWave for helping test the mod
 
 ![image](https://github.com/user-attachments/assets/b7fbcd60-ec4e-475a-ab3c-6f3290d2a87b)
