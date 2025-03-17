@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BananaOS;
@@ -11,14 +11,12 @@ using BepInEx;
 
 namespace LongarmMonke
 {
-    [BepInPlugin("default.LongarmMonke", "LongarmMonke", "1.0.0")]
-    public class Mod : BaseUnityPlugin { }
     public class Page : WatchPage
     {
         private const string PageTitle = "<i><color=#fd5c63>Long Arm Monke</color></i>";
 
         public override bool DisplayOnMainMenu => true;
-        public bool arms;
+        public static bool arms;
         public override string Title => PageTitle;
         public override void OnPostModSetup() => selectionHandler.maxIndex = 0;
          
@@ -30,7 +28,7 @@ namespace LongarmMonke
             stringBuilder.AppendLine("<size=0.25>    </size>");
             if (NetworkSystem.Instance.InRoom && NetworkSystem.Instance.GameModeString.Contains("MODDED"))
             {
-                if (arms)
+                if (Mod.Arms.Value == true)
                     stringBuilder.AppendLine(selectionHandler.GetOriginalBananaOSSelectionText(0, "<size=0.57><color=#00FF40>Enabled</color>"));
                 else
                     stringBuilder.AppendLine(selectionHandler.GetOriginalBananaOSSelectionText(0, "<size=0.57><color=#AA0000>Disabled</color>"));
@@ -56,7 +54,8 @@ namespace LongarmMonke
                     break;
 
                 case WatchButtonType.Enter:
-                    arms = !arms;
+                    if (NetworkSystem.Instance.InRoom && NetworkSystem.Instance.GameModeString.Contains("MODDED"))
+                        Mod.Arms.Value = !Mod.Arms.Value;
                     break;
 
                 case WatchButtonType.Back:
@@ -64,9 +63,9 @@ namespace LongarmMonke
                     break;
             }
         }
-        void Update()
+        private void Update()
         {
-            if (arms && NetworkSystem.Instance.InRoom && NetworkSystem.Instance.GameModeString.Contains("MODDED")) 
+            if (Mod.Arms.Value == true && NetworkSystem.Instance.InRoom && NetworkSystem.Instance.GameModeString.Contains("MODDED")) 
             {
                 Player.Instance.leftControllerTransform.transform.position = GorillaTagger.Instance.leftHandTransform.position + (GorillaTagger.Instance.leftHandTransform.forward * 0.35f);
                 Player.Instance.rightControllerTransform.transform.position = GorillaTagger.Instance.rightHandTransform.position + (GorillaTagger.Instance.rightHandTransform.forward * 0.35f);
