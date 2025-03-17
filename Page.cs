@@ -65,7 +65,7 @@ namespace LongarmMonke
         }
         private void Update()
         {
-            if (Mod.Arms.Value == true && NetworkSystem.Instance.InRoom && NetworkSystem.Instance.GameModeString.Contains("MODDED")) 
+            if (Mod.Arms.Value && NetworkSystem.Instance.InRoom && NetworkSystem.Instance.GameModeString.Contains("MODDED")) 
             {
                 Player.Instance.leftControllerTransform.transform.position = GorillaTagger.Instance.leftHandTransform.position + (GorillaTagger.Instance.leftHandTransform.forward * 0.35f);
                 Player.Instance.rightControllerTransform.transform.position = GorillaTagger.Instance.rightHandTransform.position + (GorillaTagger.Instance.rightHandTransform.forward * 0.35f);
